@@ -138,7 +138,7 @@ List<ItemModel> itemList = [
       pricePerHour: 3000,
       distance: 4.2,
       category: "Outdoor and Recreation",
-      available: true,
+      available: false,
       totalItem: 12,
       rating: [
         CommnetModel(

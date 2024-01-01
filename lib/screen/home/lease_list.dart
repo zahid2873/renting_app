@@ -48,23 +48,56 @@ class LeaseList extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.only(top: 12),
-          height: 240,
+          height: 230,
           child: ListView.builder(
               itemCount: itemList.length,
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
-                return const LeaseItem();
+                return LeaseItem(
+                  name: itemList[index].productName,
+                  img: itemList[index].productImg,
+                  available: itemList[index].available,
+                  rating: calculateRating(index),
+                  pricePerHour: itemList[index].pricePerHour,
+                );
               }),
         )
       ]),
     );
   }
+
+  String calculateRating(int index) {
+    double rating = 0.0;
+    if (itemList[index].rating == null) return "0.0";
+    for (int i = 0; i < itemList[index].rating!.length; i++) {
+      double r = itemList[index].rating?[i].rating ?? 0;
+
+      rating = rating + r;
+    }
+    rating = rating / itemList[index].rating!.length;
+
+    return rating.toStringAsFixed(1);
+  }
 }
 
 class LeaseItem extends StatelessWidget {
-  const LeaseItem({super.key});
+  LeaseItem({
+    super.key,
+    this.name,
+    this.img,
+    this.available = false,
+    this.rating,
+    this.pricePerHour,
+    VoidCallback? onTap,
+  }) : onTap = onTap ?? (() {});
+  final String? name;
+  final String? img;
+  final bool? available;
+  final String? rating;
+  final double? pricePerHour;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +106,7 @@ class LeaseItem extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
+          borderRadius: BorderRadius.circular(25),
           onTap: () {},
           child: Ink(
               //height: 180,
@@ -96,33 +130,39 @@ class LeaseItem extends StatelessWidget {
                         left: 0,
                         right: 0,
                         child: Image.asset(
-                          "assets/category/outdoors_RecreationRb.png",
+                          "$img",
                           height: 100,
                           width: 100,
                         ),
                       ),
-                      const Positioned(
+                      Positioned(
                         top: 0,
                         right: 0,
-                        child: FaIcon(
-                          FontAwesomeIcons.heart,
-                          size: 20,
-                          color: ColorPalette.puple,
-                        ),
+                        child: available ?? false
+                            ? const Icon(
+                                Icons.favorite,
+                                color: Colors.blue,
+                                size: 20,
+                              )
+                            : const FaIcon(
+                                FontAwesomeIcons.heart,
+                                size: 20,
+                                color: Colors.blue,
+                              ),
                       ),
-                      const Positioned(
+                      Positioned(
                         bottom: 0,
                         right: 0,
                         child: Row(
                           children: [
-                            FaIcon(
+                            const FaIcon(
                               FontAwesomeIcons.star,
                               size: 20,
                               color: Colors.blue,
                             ),
                             Text(
-                              "4.2",
-                              style: TextStyle(
+                              rating ?? "0.0",
+                              style: const TextStyle(
                                   color: Colors.blue,
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold),
@@ -132,20 +172,20 @@ class LeaseItem extends StatelessWidget {
                       ),
                     ]),
                   ),
-                  const Text(
-                    "Outdoor and Recreation",
+                  Text(
+                    name ?? "",
                     style: FontStyle.titleSmall,
                   ),
-                  const Row(
+                  Row(
                     children: [
                       Text(
-                        "\$13",
-                        style: TextStyle(
+                        "\$$pricePerHour",
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),
-                      Text(
+                      const Text(
                         "/hr",
                         style: TextStyle(
                             color: Colors.grey,
