@@ -9,63 +9,54 @@ class LeaseList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 12, left: 16),
-      height: MediaQuery.of(context).size.height - 300,
-      width: double.infinity,
-      decoration: const BoxDecoration(
-          color: ColorPalette.white,
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(35), topLeft: Radius.circular(35))),
-      child: Column(children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              "Lease Again",
-              style: FontStyle.titleMedium,
+    return Column(children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text(
+            "Lease Again",
+            style: FontStyle.titleMedium,
+          ),
+          TextButton(
+            onPressed: () {
+              print("1111111111");
+            },
+            child: const Row(
+              children: [
+                Text(
+                  "See all",
+                  style: TextStyle(fontSize: 14, color: ColorPalette.puple),
+                ),
+                SizedBox(width: 5),
+                FaIcon(
+                  FontAwesomeIcons.angleRight,
+                  size: 20,
+                  color: ColorPalette.puple,
+                )
+              ],
             ),
-            TextButton(
-              onPressed: () {
-                print("1111111111");
-              },
-              child: const Row(
-                children: [
-                  Text(
-                    "See all",
-                    style: TextStyle(fontSize: 14, color: ColorPalette.puple),
-                  ),
-                  SizedBox(width: 5),
-                  FaIcon(
-                    FontAwesomeIcons.angleRight,
-                    size: 20,
-                    color: ColorPalette.puple,
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-        Container(
-          padding: const EdgeInsets.only(top: 12),
-          height: 230,
-          child: ListView.builder(
-              itemCount: itemList.length,
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return LeaseItem(
-                  name: itemList[index].productName,
-                  img: itemList[index].productImg,
-                  available: itemList[index].available,
-                  rating: calculateRating(index),
-                  pricePerHour: itemList[index].pricePerHour,
-                );
-              }),
-        )
-      ]),
-    );
+          ),
+        ],
+      ),
+      Container(
+        padding: const EdgeInsets.only(top: 12),
+        height: 230,
+        child: ListView.builder(
+            itemCount: itemList.length,
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, index) {
+              return LeaseItem(
+                name: itemList[index].productName,
+                img: itemList[index].productImg,
+                available: itemList[index].available,
+                rating: calculateRating(index),
+                pricePerHour: itemList[index].pricePerHour,
+              );
+            }),
+      )
+    ]);
   }
 
   String calculateRating(int index) {
@@ -160,6 +151,7 @@ class LeaseItem extends StatelessWidget {
                               size: 20,
                               color: Colors.blue,
                             ),
+                            const SizedBox(width: 5),
                             Text(
                               rating ?? "0.0",
                               style: const TextStyle(
@@ -172,9 +164,11 @@ class LeaseItem extends StatelessWidget {
                       ),
                     ]),
                   ),
-                  Text(
-                    name ?? "",
-                    style: FontStyle.titleSmall,
+                  RichText(
+                    text:
+                        TextSpan(text: name ?? "", style: FontStyle.titleSmall),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   Row(
                     children: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:renting_app/constants/colorPalette.dart';
+import 'package:renting_app/screen/home/available_list.dart';
 import 'package:renting_app/screen/home/lease_list.dart';
 import 'package:renting_app/screen/home/rent_categories.dart';
 import 'package:renting_app/widget/customAppBar.dart';
@@ -9,17 +10,30 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
         backgroundColor: ColorPalette.black,
         body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomHomeAppBar(),
-               RentCategories(),
-               LeaseList(),
+              const CustomHomeAppBar(),
+              const RentCategories(),
+              Container(
+                padding: const EdgeInsets.only(top: 12, left: 16),
+                // height: MediaQuery.of(context).size.height - 300,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                    color: ColorPalette.white,
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(35),
+                        topLeft: Radius.circular(35))),
+                child: const Column(children: [
+                  LeaseList(),
+                  AvailableList(),
+                ]),
+              ),
             ],
           ),
         ),

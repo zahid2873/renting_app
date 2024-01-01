@@ -46,7 +46,7 @@ List<ItemModel> itemList = [
       pricePerHour: 3000,
       pricePerDay: 100,
       pricePerMonth: 1500,
-      distance: 4.2,
+      distance: 5.2,
       category: "Outdoor and Recreation",
       available: true,
       totalItem: 12,
@@ -69,12 +69,12 @@ List<ItemModel> itemList = [
         CommnetModel(
           name: "Jhon",
           comment: "Very good price! love it",
-          rating: 3,
+          rating: 4,
         ),
         CommnetModel(
           name: "Jhon",
           comment: "Very good price! love it",
-          rating: 2,
+          rating: 4,
         ),
         CommnetModel(
           name: "Jhon",
