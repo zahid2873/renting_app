@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:renting_app/constants/colorPalette.dart';
+import 'package:renting_app/constants/color_palette.dart';
 import 'package:renting_app/model/category_model.dart';
 import 'package:renting_app/utils/textStyle.dart';
 
@@ -60,34 +60,37 @@ class CategoriesItem extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(35),
           child: Ink(
             height: 80,
             width: 120,
             decoration: BoxDecoration(
               color: color,
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(35),
             ),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    img ?? "",
-                    height: 100,
-                    width: 100,
-                  ),
-                  const SizedBox(height: 5),
-                  Expanded(
-                    child: RichText(
-                      text: TextSpan(
-                        text: name,
-                        style: FontStyle.labelLarge,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      img ?? "",
+                      height: 100,
+                      width: 100,
                     ),
-                  ),
-                ]),
+                    const SizedBox(height: 5),
+                    Expanded(
+                      child: RichText(
+                        text: TextSpan(
+                          text: name,
+                          style: FontStyle.labelLarge,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ]),
+            ),
           ),
         ),
       ),

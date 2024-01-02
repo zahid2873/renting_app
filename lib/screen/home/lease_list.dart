@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:renting_app/constants/colorPalette.dart';
+import 'package:renting_app/constants/color_palette.dart';
 import 'package:renting_app/model/item_model.dart';
+import 'package:renting_app/screen/details/item_details.dart';
 import 'package:renting_app/utils/textStyle.dart';
 
 class LeaseList extends StatelessWidget {
@@ -18,9 +19,7 @@ class LeaseList extends StatelessWidget {
             style: FontStyle.titleMedium,
           ),
           TextButton(
-            onPressed: () {
-              print("1111111111");
-            },
+            onPressed: () {},
             child: const Row(
               children: [
                 Text(
@@ -53,6 +52,11 @@ class LeaseList extends StatelessWidget {
                 available: itemList[index].available,
                 rating: calculateRating(index),
                 pricePerHour: itemList[index].pricePerHour,
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            ItemDetails(item: itemList[index]))),
               );
             }),
       )
@@ -98,9 +102,8 @@ class LeaseItem extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(25),
-          onTap: () {},
+          onTap: onTap,
           child: Ink(
-              //height: 180,
               width: 140,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),

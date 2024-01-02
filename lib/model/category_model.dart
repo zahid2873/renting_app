@@ -1,6 +1,7 @@
 import 'dart:ui';
 
-import 'package:renting_app/constants/colorPalette.dart';
+import 'package:renting_app/constants/color_palette.dart';
+
 
 class CategoryModel {
   String? categoryName;

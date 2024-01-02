@@ -9,4 +9,5 @@ abstract class ColorPalette {
   static const Color pink = Color.fromRGBO(255, 141, 158, 1);
   static const Color yellow = Color.fromRGBO(255, 193, 122, 1);
   static const Color grey = Color.fromRGBO(241, 238, 245, 1);
+  static const Color blue = Color.fromRGBO(121, 74, 245, 1);
 }

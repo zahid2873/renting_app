@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:renting_app/constants/colorPalette.dart';
+import 'package:renting_app/constants/color_palette.dart';
 import 'package:renting_app/utils/textStyle.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
