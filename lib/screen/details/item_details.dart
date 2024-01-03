@@ -3,7 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:renting_app/constants/color_palette.dart';
 import 'package:renting_app/model/item_model.dart';
 import 'package:renting_app/screen/details/item_images.dart';
+import 'package:renting_app/screen/details/owners_details.dart';
+import 'package:renting_app/screen/details/payment_category.dart';
 import 'package:renting_app/utils/textStyle.dart';
+import 'package:renting_app/widget/customAppBar.dart';
 
 class ItemDetails extends StatelessWidget {
   const ItemDetails({super.key, required this.item});
@@ -12,23 +15,22 @@ class ItemDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: CustomAppBar(
         centerTitle: true,
+        backgroundColor: Colors.transparent,
         title: Text(
           item?.productName ?? "",
           style: FontStyle.titleMedium,
         ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 14),
-            child: CircleAvatar(
-                backgroundColor: ColorPalette.grey,
-                child: Icon(
-                  Icons.favorite,
-                  color: ColorPalette.blue,
-                )),
-          )
-        ],
+        action: const Padding(
+          padding: EdgeInsets.only(right: 14),
+          child: CircleAvatar(
+              backgroundColor: ColorPalette.grey,
+              child: Icon(
+                Icons.favorite,
+                color: ColorPalette.blue,
+              )),
+        ),
         leading: IconButton(
           onPressed: () => context.pop(),
           icon: const Icon(Icons.arrow_back),
@@ -36,11 +38,17 @@ class ItemDetails extends StatelessWidget {
       ),
       body: Column(children: [
         ItemImages(
-          image: item?.productImg ?? "",
-          distance: item?.distance ?? 0.0,
+          image: item?.productImg,
+          distance: item?.distance,
           isAvailable: item?.available ?? false,
           rating: calculateRating(item),
-        )
+        ),
+        OwnerDetails(
+          ownerName: item?.ownerName,
+          ownerImg: item?.ownerImg,
+          rating: double.parse(calculateRating(item)),
+        ),
+        PaymentCategory(),
       ]),
     );
   }

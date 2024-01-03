@@ -2,6 +2,7 @@ class ItemModel {
   String? itemId;
   String? ownerId;
   String? ownerName;
+  String? ownerImg;
   String? productName;
   String? productImg;
   double? pricePerHour;
@@ -17,6 +18,7 @@ class ItemModel {
       {this.itemId,
       this.ownerId,
       this.ownerName,
+      this.ownerImg,
       this.productName,
       this.productImg,
       this.pricePerHour,
@@ -42,6 +44,7 @@ List<ItemModel> itemList = [
       ownerId: "1",
       ownerName: "Mahdi",
       productName: "Outdoor and Recreation",
+      ownerImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReJlZqg8h_KEyGmrr6wcjHmxxz6XYL14oX5w&usqp=CAU",
       productImg: "assets/category/outdoors_RecreationRb.png",
       pricePerHour: 3000,
       pricePerDay: 100,
@@ -131,6 +134,7 @@ List<ItemModel> itemList = [
       itemId: "03",
       ownerId: "3",
       ownerName: "Mahdi",
+      ownerImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReJlZqg8h_KEyGmrr6wcjHmxxz6XYL14oX5w&usqp=CAU",
       productName: "Outdoor and Recreation",
       productImg: "assets/category/outdoors_RecreationRb.png",
       pricePerDay: 100,
