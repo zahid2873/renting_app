@@ -12,6 +12,7 @@ class OwnerDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       height: 70,
       margin: const EdgeInsets.only(top: 20),
       padding: const EdgeInsets.only(left: 16, right: 16),
@@ -20,6 +21,7 @@ class OwnerDetails extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(50),
@@ -28,11 +30,13 @@ class OwnerDetails extends StatelessWidget {
                       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReJlZqg8h_KEyGmrr6wcjHmxxz6XYL14oX5w&usqp=CAU",
                   height: 60,
                   width: 60,
+                  fit: BoxFit.cover,
                 ),
               ),
               const SizedBox(width: 5),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     ownerName ?? "",

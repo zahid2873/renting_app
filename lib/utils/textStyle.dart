@@ -4,7 +4,7 @@ abstract class FontStyle {
   static const TextStyle labelLarge = TextStyle(
     color: Colors.black,
     fontSize: 16,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.bold,
   );
   static const TextStyle labelMedium = TextStyle(
     color: Colors.white,
