@@ -49,11 +49,9 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 12, left: 16),
                 // height: MediaQuery.of(context).size.height - 300,
                 width: double.infinity,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                     color: ColorPalette.white,
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(35),
-                        topLeft: Radius.circular(35))),
+                    borderRadius: BorderRadius.circular(35)),
                 child: const Column(children: [
                   LeaseList(),
                   AvailableList(),

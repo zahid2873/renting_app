@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:renting_app/constants/color_palette.dart';
+import 'package:renting_app/screen/user/user_details.dart';
 import 'package:renting_app/utils/textStyle.dart';
 
 class OwnerDetails extends StatelessWidget {
@@ -62,11 +63,14 @@ class OwnerDetails extends StatelessWidget {
               ),
             ],
           ),
-          const CircleAvatar(
-            child: FaIcon(
-              FontAwesomeIcons.angleRight,
-              size: 20,
-              color: ColorPalette.puple,
+          InkWell(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const UserDetails())),
+            child: const CircleAvatar(
+              child: FaIcon(
+                FontAwesomeIcons.angleRight,
+                size: 20,
+                color: ColorPalette.puple,
+              ),
             ),
           )
         ],
