@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:renting_app/constants/color_palette.dart';
+import 'package:renting_app/model/item_model.dart';
 import 'package:renting_app/screen/user/customer_info.dart';
 import 'package:renting_app/screen/user/user_commnet.dart';
 import 'package:renting_app/screen/user/user_profile.dart';
 import 'package:renting_app/widget/customAppBar.dart';
 
 class UserDetails extends StatelessWidget {
-  const UserDetails({super.key});
-
+  const UserDetails({super.key, this.item});
+  final ItemModel? item;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,13 +29,17 @@ class UserDetails extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      body: const SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child:  Column(
+      body:  SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
           children: [
-            UserProfile(),
-            Customers(),
-            UserComment(),
+            UserProfile(
+              img: item?.ownerImg,
+              name: item?.ownerName,
+              location: item?.ownerLocation,
+            ),
+            Customers(commnetModel: item?.rating,),
+            UserComment(comment: item?.rating,),
           ],
         ),
       ),

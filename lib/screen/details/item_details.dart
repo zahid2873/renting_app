@@ -50,6 +50,7 @@ class ItemDetails extends StatelessWidget {
             ownerName: item?.ownerName,
             ownerImg: item?.ownerImg,
             rating: double.parse(calculateRating(item)),
+            item: item,
           ),
           PaymentCategory(
             pricePerHour: item?.pricePerHour,

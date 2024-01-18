@@ -3,6 +3,7 @@ class ItemModel {
   String? ownerId;
   String? ownerName;
   String? ownerImg;
+  String? ownerLocation;
   String? productName;
   String? productImg;
   double? pricePerHour;
@@ -21,6 +22,7 @@ class ItemModel {
       this.ownerImg,
       this.productName,
       this.productImg,
+      this.ownerLocation,
       this.pricePerHour,
       this.pricePerDay,
       this.pricePerMonth,
@@ -33,9 +35,10 @@ class ItemModel {
 
 class CommnetModel {
   String? name;
+  String? img;
   double? rating;
   String? comment;
-  CommnetModel({this.name, this.rating, this.comment});
+  CommnetModel({this.name,this.img, this.rating, this.comment});
 }
 
 List<ItemModel> itemList = [
@@ -47,6 +50,7 @@ List<ItemModel> itemList = [
       ownerImg:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKHeO3Q5zGljjQWl4LVgPw6U3WPzGi6BGIdA&usqp=CAU",
       productImg: "assets/category/vehiclesRb.png",
+      ownerLocation: "Dhaka, Bangladesh",
       pricePerHour: 3000,
       pricePerDay: 100,
       pricePerMonth: 1500,
@@ -57,31 +61,37 @@ List<ItemModel> itemList = [
       rating: [
         CommnetModel(
           name: "Jhon",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKHeO3Q5zGljjQWl4LVgPw6U3WPzGi6BGIdA&usqp=CAU",
           comment: "Very good price! love it",
           rating: 5,
         ),
         CommnetModel(
           name: "Jhon",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKHeO3Q5zGljjQWl4LVgPw6U3WPzGi6BGIdA&usqp=CAU",
           comment: "Very good price! love it",
           rating: 5,
         ),
         CommnetModel(
           name: "Jhon",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKHeO3Q5zGljjQWl4LVgPw6U3WPzGi6BGIdA&usqp=CAU",
           comment: "Very good price! love it",
           rating: 4,
         ),
         CommnetModel(
           name: "Jhon",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKHeO3Q5zGljjQWl4LVgPw6U3WPzGi6BGIdA&usqp=CAU",
           comment: "Very good price! love it",
           rating: 4,
         ),
         CommnetModel(
           name: "Jhon",
+          img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKHeO3Q5zGljjQWl4LVgPw6U3WPzGi6BGIdA&usqp=CAU",
           comment: "Very good price! love it",
           rating: 4,
         ),
         CommnetModel(
           name: "Jhon",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKHeO3Q5zGljjQWl4LVgPw6U3WPzGi6BGIdA&usqp=CAU",
           comment: "Very good price! love it",
           rating: 3,
         )

@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:image_stack/image_stack.dart';
 import 'package:renting_app/constants/color_palette.dart';
+import 'package:renting_app/model/item_model.dart';
 
 class Customers extends StatelessWidget {
-  const Customers({super.key});
+  const Customers({super.key, this.commnetModel});
+  final List<CommnetModel>? commnetModel;
 
   static String image1Link =
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKHeO3Q5zGljjQWl4LVgPw6U3WPzGi6BGIdA&usqp=CAU";
-  static List<String> images = [
-    image1Link,
-    image1Link,
-    image1Link,
-    image1Link,
-    image1Link
-  ];
+  static List<String> images = [];
+  static String? totalRating;
+
   @override
   Widget build(BuildContext context) {
+    calculateRating(commnetModel);
     return Container(
       margin: const EdgeInsets.only(left: 16, top: 20, right: 16),
       height: 100,
@@ -36,14 +35,14 @@ class Customers extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ImageStack(
-                  imageList: images,
-                  totalCount: images.length,
+                  imageList: imageList(),
+                  totalCount: imageList().length,
                   imageRadius: 35,
                   imageCount: 3,
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  "${images.length} Customers",
+                  "${commnetModel?.length.toString()} Customers",
                   style: TextStyle(
                       fontSize: 14, color: ColorPalette.grey.withOpacity(0.5)),
                 )
@@ -63,22 +62,22 @@ class Customers extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.star,
                       color: Colors.blue,
                     ),
                     Text(
-                      "4.7",
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                      totalRating ?? "0.0",
+                      style: const TextStyle(fontSize: 16, color: Colors.white),
                     ),
                   ],
                 ),
                 const SizedBox(height: 15),
                 Text(
-                  "17 Reviews",
+                  "${commnetModel?.length.toString()}",
                   style: TextStyle(
                       fontSize: 14, color: ColorPalette.grey.withOpacity(0.5)),
                 )
@@ -111,5 +110,27 @@ class Customers extends StatelessWidget {
         )
       ]),
     );
+  }
+
+  List<String> imageList() {
+    images.clear();
+    for (CommnetModel comment in commnetModel!) {
+      images.add(comment.img ??
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKHeO3Q5zGljjQWl4LVgPw6U3WPzGi6BGIdA&usqp=CAU");
+    }
+    return images;
+  }
+
+  calculateRating(List<CommnetModel>? item) {
+    double rating = 0.0;
+    if (commnetModel == null) return;
+    for (int i = 0; i < commnetModel!.length; i++) {
+      double r = commnetModel?[i].rating ?? 0;
+
+      rating = rating + r;
+    }
+    rating = rating / commnetModel!.length;
+
+    totalRating = rating.toStringAsFixed(1);
   }
 }

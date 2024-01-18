@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:renting_app/constants/color_palette.dart';
+import 'package:renting_app/model/item_model.dart';
 import 'package:renting_app/screen/user/user_details.dart';
 import 'package:renting_app/utils/textStyle.dart';
 
 class OwnerDetails extends StatelessWidget {
-  const OwnerDetails({super.key, this.ownerName, this.ownerImg, this.rating});
+  const OwnerDetails(
+      {super.key, this.ownerName, this.ownerImg, this.rating, this.item});
   final String? ownerName;
   final String? ownerImg;
   final double? rating;
+  final ItemModel? item;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +67,9 @@ class OwnerDetails extends StatelessWidget {
             ],
           ),
           InkWell(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const UserDetails())),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => UserDetails(item: item))),
+            borderRadius: BorderRadius.circular(50),
             child: const CircleAvatar(
               child: FaIcon(
                 FontAwesomeIcons.angleRight,
