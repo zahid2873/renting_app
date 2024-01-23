@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:renting_app/constants/color_palette.dart';
+import 'package:renting_app/controller/commentController.dart';
 import 'package:renting_app/model/item_model.dart';
 import 'package:renting_app/utils/textStyle.dart';
 
-class UserComment extends StatelessWidget {
+class UserComment extends StatefulWidget {
   const UserComment({super.key, this.comment});
   final List<CommnetModel>? comment;
+
+  @override
+  State<UserComment> createState() => _UserCommentState();
+}
+
+class _UserCommentState extends State<UserComment> {
+    CommentControler controler = Get.find<CommentControler>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //controler.addComment(item, rating)
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,16 +45,16 @@ class UserComment extends StatelessWidget {
               borderRadius: BorderRadius.circular(25),
             ),
             child: ListView.builder(
-                itemCount: comment?.length,
+                itemCount: widget.comment?.length,
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: ((context, index) {
                   return CommnetItem(
-                    name: comment?[index].name,
-                    img: comment?[index].img,
-                    rating: comment?[index].rating.toString(),
-                    comment: comment?[index].comment,
+                    name: widget.comment?[index].name,
+                    img: widget.comment?[index].img,
+                    rating: widget.comment?[index].rating.toString(),
+                    comment: widget.comment?[index].comment,
                   );
                 })),
           ),

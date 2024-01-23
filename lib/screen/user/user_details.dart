@@ -37,7 +37,7 @@ class UserDetails extends StatelessWidget {
               img: item?.ownerImg,
               name: item?.ownerName,
               location: item?.ownerLocation,
-            ),
+              item: item,            ),
             Customers(commnetModel: item?.rating,),
             UserComment(comment: item?.rating,),
           ],
