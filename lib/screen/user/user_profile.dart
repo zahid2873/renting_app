@@ -140,7 +140,11 @@ class UserProfile extends StatelessWidget {
                       style: TextStyle(color: Colors.white, fontSize: 14),
                       onChanged: (value) {},
                     ),
-                    ElevatedButton(
+                    const SizedBox(height: 10),
+                    MaterialButton(
+                        height: 40,
+                        minWidth: double.infinity,
+                        color: ColorPalette.green,
                         onPressed: () {
                           Navigator.pop(context);
                           controler.addComment(item, rating);

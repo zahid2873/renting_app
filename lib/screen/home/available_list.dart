@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:renting_app/constants/color_palette.dart';
 import 'package:renting_app/model/item_model.dart';
+import 'package:renting_app/screen/details/item_details.dart';
 import 'package:renting_app/utils/textStyle.dart';
 
 class AvailableList extends StatefulWidget {
@@ -42,6 +43,11 @@ class _AvailableListState extends State<AvailableList> {
                   rating: calculateRating(index),
                   pricePerHour: itemList[index].pricePerHour,
                   distance: availableList[index].distance,
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ItemDetails(item: itemList[index]))),
                 );
               })),
         ),
@@ -100,7 +106,7 @@ class AvailableItem extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(25),
-          onTap: () {},
+          onTap: onTap,
           child: Ink(
             height: 100,
             decoration: BoxDecoration(
@@ -116,7 +122,11 @@ class AvailableItem extends StatelessWidget {
                         color: ColorPalette.white,
                         borderRadius: BorderRadius.circular(10)),
                     child: Image.asset(
-                        "assets/category/outdoors_RecreationRb.png"),
+                      img ?? "assets/category/outdoors_RecreationRb.png",
+                      height: 80,
+                      width: 80,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,

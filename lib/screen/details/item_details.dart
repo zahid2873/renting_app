@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:renting_app/constants/color_palette.dart';
 import 'package:renting_app/model/item_model.dart';
-import 'package:renting_app/screen/details/renting_dates.dart';
 import 'package:renting_app/screen/details/item_images.dart';
 import 'package:renting_app/screen/details/owners_details.dart';
 import 'package:renting_app/screen/details/payment_category.dart';
@@ -57,7 +56,7 @@ class ItemDetails extends StatelessWidget {
             pricePerDay: item?.pricePerDay,
             pricePermth: item?.pricePerMonth,
           ),
-           RentingDates(pricePerDays: item?.pricePerDay??0.0,),
+         //  RentingDates(pricePerDays: item?.pricePerDay??0.0,),
         ]),
       ),
     );

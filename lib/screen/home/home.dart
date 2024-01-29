@@ -14,52 +14,50 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorPalette.black,
-        appBar: CustomAppBar(
-          backgroundColor: Colors.transparent,
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: () {},
-            icon: const FaIcon(
-              FontAwesomeIcons.magnifyingGlass,
-              color: ColorPalette.white,
-              size: 24,
-            ),
-          ),
-          title: const AppBarTitle(),
-          action: const Badge(
-            alignment: Alignment(1, -1.5),
-            backgroundColor: ColorPalette.blue,
-            child: FaIcon(
-              FontAwesomeIcons.bell,
-              color: ColorPalette.white,
-              size: 24,
-            ),
+    return Scaffold(
+      backgroundColor: ColorPalette.black,
+      appBar: CustomAppBar(
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () {},
+          icon: const FaIcon(
+            FontAwesomeIcons.magnifyingGlass,
+            color: ColorPalette.white,
+            size: 24,
           ),
         ),
-        bottomNavigationBar: const CustomBottomNavigationBar(),
-        body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const RentCategories(),
-              Container(
-                padding: const EdgeInsets.only(top: 12, left: 16),
-                // height: MediaQuery.of(context).size.height - 300,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: ColorPalette.white,
-                    borderRadius: BorderRadius.circular(35)),
-                child: const Column(children: [
-                  LeaseList(),
-                  AvailableList(),
-                ]),
-              ),
-            ],
+        title: const AppBarTitle(),
+        action: const Badge(
+          alignment: Alignment(1, -1.5),
+          backgroundColor: ColorPalette.blue,
+          child: FaIcon(
+            FontAwesomeIcons.bell,
+            color: ColorPalette.white,
+            size: 24,
           ),
+        ),
+      ),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const RentCategories(),
+            Container(
+              padding: const EdgeInsets.only(top: 12, left: 16),
+              // height: MediaQuery.of(context).size.height - 300,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: ColorPalette.white,
+                  borderRadius: BorderRadius.circular(35)),
+              child: const Column(children: [
+                LeaseList(),
+                AvailableList(),
+              ]),
+            ),
+          ],
         ),
       ),
     );

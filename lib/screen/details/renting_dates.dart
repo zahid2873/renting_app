@@ -18,7 +18,7 @@ class _DatesState extends State<RentingDates> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, top: 20, right: 16),
+      padding: const EdgeInsets.only(top: 20),
       child: Column(
         children: [
           ListTile(
@@ -72,7 +72,7 @@ class _DatesState extends State<RentingDates> {
   }
 
   rentingDays() {
-    days = (selectedDate.difference(DateTime.now()).inHours / 24).round();
+    days = (selectedDate.difference(DateTime.now()).inHours / 24).round() + 1;
   }
 
   double totalPrice = 0.0;

@@ -48,10 +48,11 @@ class OwnerDetails extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      const Text(
-                        "★★★★★",
-                        style: TextStyle(color: Colors.blue, fontSize: 16),
-                      ),
+                      RatingWidget(rating: rating??0.0),
+                      // const Text(
+                      //   "★★★★★",
+                      //   style: TextStyle(color: Colors.blue, fontSize: 16),
+                      // ),
                       const SizedBox(width: 3),
                       Text(
                         "$rating",
@@ -80,6 +81,39 @@ class OwnerDetails extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class RatingWidget extends StatelessWidget {
+  final double rating;
+
+  const RatingWidget({super.key, required this.rating});
+
+  @override
+  Widget build(BuildContext context) {
+    int fullStars = rating.floor();
+    double halfStar = rating - fullStars;
+    int emptyStars = 5 - fullStars - (halfStar > 0.0 ? 1 : 0);
+
+    return Row(
+      children: [
+        for (int i = 0; i < fullStars; i++)
+          const Icon(
+            Icons.star,
+            color: Colors.amber,
+          ),
+        if (halfStar > 0.0)
+          const Icon(
+            Icons.star_half,
+            color: Colors.amber,
+          ),
+        for (int i = 0; i < emptyStars; i++)
+          const Icon(
+            Icons.star_border,
+            color: Colors.amber,
+          ),
+      ],
     );
   }
 }

@@ -24,7 +24,7 @@ class ItemImages extends StatelessWidget {
               image: AssetImage(
                 image ?? "",
               ),
-              fit: BoxFit.cover)),
+              fit: BoxFit.contain)),
       child: Row(
         children: [
           Container(
